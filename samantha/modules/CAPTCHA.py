@@ -16,9 +16,8 @@ from samantha import TOKEN, TELETHON_ID, TELETHON_HASH, MESSAGE_DUMP, pbot
 tg_app_id = TELETHON_ID
 tg_api_key = TELETHON_HASH
 bot_api_key = TOKEN
-bot_dustbin = MESSAGE_DUMP
 
-image = ImageCaptcha(fonts=["samantha\modules\helper_funcs\font.ttf"])
+image = ImageCaptcha(fonts=["font.ttf"])
 
 db = TinyDB("db.json")
 db_query = Query()
@@ -54,17 +53,17 @@ async def correct_captcha_cb_handler(c: Client, cb: CallbackQuery):
                 )
 
                 await cb.edit_message_reply_markup()
-
                 await cb.edit_message_text(
                     f"{mention} has successfully solved the Captcha and verified."
                 )
 
                 remove_captcha(cb.message.chat.id, cb.message.message_id)
+                await pbot.delete_messages(cb.message.chat.id, cb.message.message_id)
             else:
-                await cb.edit_message_reply_markup()
-                await c.edit_message_text(
+                await pbot.delete_messages(cb.message.chat.id, cb.message.message_id)
+                await pbot.send_message(
                     chat_id=cb.message.chat.id,
-                    message_id=cb.message.message_id,
+
                     text=f"{mention} has Failed to solve the Captcha."
                 )
 
@@ -131,82 +130,6 @@ async def on_new_chat_members(c: Client, m: Message):
     await check_resolved(cap_message)
 
 
-@pbot.on_message(filters.photo, group=3)
-async def hide_pictures_handler(c: Client, m: Message):
-    hid_message = await m.forward(
-        chat_id=bot_dustbin
-    )
-
-    mention = f"<a href='tg://user?id={m.from_user.id}'>{m.from_user.first_name}</a>"
-
-    await m.reply_text(
-        f"I have hidden the photo sent by {mention}.",
-        reply_markup=InlineKeyboardMarkup(
-            [
-                [
-                    InlineKeyboardButton(
-                        text=f"{emoji.FRAMED_PICTURE} Show me the Photo.",
-                        callback_data=f"shp_{hid_message.message_id}"
-                    )
-                ],
-                [
-                    InlineKeyboardButton(
-                        text=f"{emoji.FRAMED_PICTURE} Add the Photo to Chat.",
-                        callback_data=f"apc_{hid_message.message_id}_{m.chat.id}"
-                    )
-                ]
-            ]
-        )
-
-    )
-
-    await m.delete()
-
-
-@pbot.on_callback_query(filters.regex('^shp.*'))
-async def shp_cb_handler(c: Client, cb: CallbackQuery):
-    cb_data = cb.data.split("_")
-    if len(cb_data) > 1:
-        msg_id = int(cb_data[1])
-
-        await c.forward_messages(
-            chat_id=cb.from_user.id,
-            from_chat_id=bot_dustbin,
-            message_ids=msg_id
-        )
-
-        await cb.answer()
-
-
-@pbot.on_callback_query(filters.regex('^apc.*'))
-async def apc_cb_handler(c: Client, cb: CallbackQuery):
-    cb_data = cb.data.split("_")
-    if len(cb_data) > 2:
-        msg_id = int(cb_data[1])
-        f_chat_id = int(cb_data[2])
-
-        admins = await c.get_chat_members(chat_id=f_chat_id, filter="administrators")
-        admin_list = [
-            admin.user.id
-            for admin in admins
-        ]
-
-        if cb.from_user.id in admin_list:
-            await c.forward_messages(
-                chat_id=f_chat_id,
-                from_chat_id=bot_dustbin,
-                message_ids=msg_id
-            )
-
-            await cb.message.delete()
-            await cb.answer()
-        else:
-            await cb. answer(
-                "You need to be an admin to approve this photo to be added to the chat permanently!",
-                show_alert=True
-            )
-
-
 async def check_resolved(msg):
     while True:
         cap_data = get_captcha(msg.chat.id, msg.message_id)
@@ -219,16 +142,12 @@ async def check_resolved(msg):
             mention = f"<a href='tg://user?id={user.id}'>{user.first_name}</a>"
 
             try:
-                await pbot.edit_message_reply_markup(
+                await baboon.delete_messages(msg.chat.id, msg.message_id)
+                await baboon.send_message(
                     chat_id=msg.chat.id,
-                    message_id=msg.message_id
-                )
-
-                await pbot.edit_message_text(
-                    chat_id=msg.chat.id,
-                    message_id=msg.message_id,
                     text=f"{mention} has Failed to solve the Captcha within the given time period."
                 )
+
             except MessageNotModified as e:
                 pass
 
