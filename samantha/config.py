@@ -33,7 +33,7 @@ class Config(object):
     BLACKLIST_CHATS = []
     DONATION_LINK = None  # EG, paypal
     CERT_PATH = None
-    PORT = 5000
+    PORT = 5432
     DEL_CMDS = True  # Whether or not you should delete "blue text must click" commands
     STRICT_GBAN = True
     WORKERS = 8  # Number of subthreads to use. This is the recommended amount - see for yourself what works best!
