@@ -36,7 +36,7 @@ from samantha.modules.helper_funcs.alternate import typing_action
 PM_START_TEXT = f"""
 Hey there! my name is *{dispatcher.bot.first_name}*. If you have any questions on how to use me, Click Help button.
 
-Any issues or need help related to me? join our group [Konoha 11](https://t.me/TheKonoha11).
+Any issues or need help related to me? join our group [Kuri](https://t.me/kuri69).
 
 Wanna Add me to your Group? Just click the button below!
 """
@@ -44,7 +44,7 @@ Wanna Add me to your Group? Just click the button below!
 buttons = [
     [
         InlineKeyboardButton(
-            text="Add to Group 👥", url="t.me/MissSamanthaBot?startgroup=true"
+            text="Thêm tôi vào nhóm 👥", url="t.me/hoahong_robot?startgroup=true"
         ),
         InlineKeyboardButton(text="Help & Commands ❔", callback_data="help_back"),
     ]
@@ -60,7 +60,6 @@ the things I can help you with.
  • /start: Starts me, can be used to check i'm alive or no...
  • /help: PM's you this message.
  • /help <module name>: PM's you info about that module.
- • /source: Information about my source.
  • /settings: in PM: will send you your settings for all supported modules.
    - in a group: will redirect you to pm, with all that chat's settings.
  \nClick on the buttons below to get documentation about specific modules!"""
