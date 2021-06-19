@@ -54,13 +54,13 @@ def mute(update, context):
 
     if member:
         if is_user_admin(chat, user_id, member=member):
-            message.reply_text("Well i'm not gonna stop an admin from talking!")
+            message.reply_text("Tôi sẽ không ngăn quản trị viên nói chuyện!")
 
         elif member.can_send_messages is None or member.can_send_messages:
             context.bot.restrict_chat_member(
                 chat.id, user_id, permissions=ChatPermissions(can_send_messages=False)
             )
-            message.reply_text("👍🏻 muted! 🤐")
+            message.reply_text("👍🏻 Đã khóa mõm! 🤐")
             return (
                 "<b>{}:</b>"
                 "\n#MUTE"
@@ -73,9 +73,9 @@ def mute(update, context):
             )
 
         else:
-            message.reply_text("This user is already taped 🤐")
+            message.reply_text("Người dùng này đã bị khóa mõm 🤐")
     else:
-        message.reply_text("This user isn't in the chat!")
+        message.reply_text("Người dùng này không có trong nhóm!")
 
     return ""
 
@@ -228,7 +228,7 @@ def temp_mute(update, context):
                 until_date=mutetime,
                 permissions=ChatPermissions(can_send_messages=False),
             )
-            message.reply_text("shut up! 🤐 Taped for {}!".format(time_val))
+            message.reply_text("Câm mồm! 🤐 Khóa mõm trong {}!".format(time_val))
             return log
         else:
             message.reply_text("This user is already muted.")
@@ -265,12 +265,12 @@ An example of temporarily mute someone:
 `/tmute @username 2h`; This mutes a user for 2 hours.
 """
 
-__mod_name__ = "Muting"
+__mod_name__ = "Khóa mõm"
 
-MUTE_HANDLER = CommandHandler("mute", mute, pass_args=True, filters=Filters.group)
+MUTE_HANDLER = CommandHandler("khoamom", mute, pass_args=True, filters=Filters.group)
 UNMUTE_HANDLER = CommandHandler("unmute", unmute, pass_args=True, filters=Filters.group)
 TEMPMUTE_HANDLER = CommandHandler(
-    ["tmute", "tempmute"], temp_mute, pass_args=True, filters=Filters.group
+    ["tmute", "tamkhoamom"], temp_mute, pass_args=True, filters=Filters.group
 )
 
 dispatcher.add_handler(MUTE_HANDLER)
