@@ -12,7 +12,7 @@ class Config(object):
     TELETHON_ID = 5790236
 
     # RECOMMENDED
-    SQLALCHEMY_DATABASE_URI = "sqldbtype://username:pw@hostname:port/db_name"  # needed for any database modules
+    SQLALCHEMY_DATABASE_URI = "postgres://hzjjtjfpxdhzax:299b7e8170a928ac0f2fab3b1fa16a653c2ec5d93336ccd541421b671fcf4721@ec2-34-232-191-133.compute-1.amazonaws.com:5432/dp3poevb7pmq6"  # needed for any database modules
     MESSAGE_DUMP = None  # needed to make sure 'save from' messages persist
     LOAD = []
     NO_LOAD = []
