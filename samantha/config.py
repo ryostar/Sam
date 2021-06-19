@@ -8,8 +8,8 @@ class Config(object):
         "1838880848"  # If you dont know, run the bot and do /id in your private chat with it
     )
     OWNER_USERNAME = "HiSabo"
-    TELETHON_HASH = None  # for purge stuffs
-    TELETHON_ID = None
+    TELETHON_HASH = "93601b58e1ca8309238701d7ea9dc078"   # for purge stuffs
+    TELETHON_ID = 5790236
 
     # RECOMMENDED
     SQLALCHEMY_DATABASE_URI = "sqldbtype://username:pw@hostname:port/db_name"  # needed for any database modules
