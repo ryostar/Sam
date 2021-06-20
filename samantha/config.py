@@ -41,7 +41,6 @@ class Config(object):
     ALLOW_EXCL = True  # DEPRECATED, USE BELOW INSTEAD! Allow ! commands as well as /
     CUSTOM_CMD = "/ !" # Set to ('/', '!') or whatever to enable it, like ALLOW_EXCL but with more custom handler!
     API_OPENWEATHER = None  # OpenWeather API
-    SPAMWATCH_API = None # Your SpamWatch token
     WALL_API = None
     SPAMWATCH_API = "D1xqiSR1PaU8LD1EYSxAHKrUXQiccZnl6BpZUNWo9W4Jt9F0xpvvzOXoQ6wvOS6y"
 
