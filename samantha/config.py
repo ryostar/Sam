@@ -3,16 +3,16 @@ class Config(object):
     LOGGER = True
 
     # REQUIRED
-    API_KEY = "1722127255:AAGD8YpaGk5KhkRQWE7Y7ws4Q43ilW5iUo0"
+    API_KEY = "1897791328:AAFvM-m2INO1F0BFieJsOVG-yPjIa2sZ7_g"
     OWNER_ID = (
-        "1838880848"  # If you dont know, run the bot and do /id in your private chat with it
+        "1816000450"  # If you dont know, run the bot and do /id in your private chat with it
     )
-    OWNER_USERNAME = "HiSabo"
+    OWNER_USERNAME = "Kuri69"
     TELETHON_HASH = "93601b58e1ca8309238701d7ea9dc078"   # for purge stuffs
     TELETHON_ID = 5790236
 
     # RECOMMENDED
-    SQLALCHEMY_DATABASE_URI = "postgresql://hzjjtjfpxdhzax:299b7e8170a928ac0f2fab3b1fa16a653c2ec5d93336ccd541421b671fcf4721@ec2-34-232-191-133.compute-1.amazonaws.com:5432/dp3poevb7pmq6"  # needed for any database modules
+    SQLALCHEMY_DATABASE_URI = "postgresql://ri:1@103.124.92.181:5432/ri"  # needed for any database modules
     MESSAGE_DUMP = None  # needed to make sure 'save from' messages persist
     LOAD = []
     NO_LOAD = []
@@ -39,10 +39,11 @@ class Config(object):
     WORKERS = 8  # Number of subthreads to use. This is the recommended amount - see for yourself what works best!
     BAN_STICKER = None  # banhammer marie sticker
     ALLOW_EXCL = True  # DEPRECATED, USE BELOW INSTEAD! Allow ! commands as well as /
-    CUSTOM_CMD = False # Set to ('/', '!') or whatever to enable it, like ALLOW_EXCL but with more custom handler!
+    CUSTOM_CMD = "/ !" # Set to ('/', '!') or whatever to enable it, like ALLOW_EXCL but with more custom handler!
     API_OPENWEATHER = None  # OpenWeather API
     SPAMWATCH_API = None # Your SpamWatch token
     WALL_API = None
+    SPAMWATCH_API = "D1xqiSR1PaU8LD1EYSxAHKrUXQiccZnl6BpZUNWo9W4Jt9F0xpvvzOXoQ6wvOS6y"
 
 class Production(Config):
     LOGGER = False
